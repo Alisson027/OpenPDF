@@ -69,8 +69,8 @@ def index():
             return send_file(
                 caminho_txt,
                 as_attachment=True,
-                download_name='traducao.txt',
-                mimetype='text/plain'
+                download_name='traducao.pdf',
+                mimetype='application/pdf'
             )
     
     return render_template('index.html')
