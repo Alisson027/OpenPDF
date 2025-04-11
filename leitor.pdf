@@ -1,0 +1,17 @@
+mport PyPDF2
+from deep_translator import GoogleTranslator
+
+# Abrir o arquivo PDF
+with open("teste.pdf", "rb") as arquivo:
+    leitor = PyPDF2.PdfReader(arquivo)
+        texto = "\n".join([pagina.extract_text() for pagina in leitor.pages if pagina.extract_text()])
+
+	# Traduzir o texto para português
+	tradutor = GoogleTranslator(source="auto", target="pt")
+	traducao = tradutor.translate(texto)
+
+	# Salvar a tradução em um arquivo
+	with open("traducao.txt", "w", encoding="utf-8") as f:
+	    f.write(traducao)
+
+	    print("Tradução salva em 'traducao.txt'")
